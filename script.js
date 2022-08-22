@@ -1,13 +1,14 @@
-let names = ['Erica Mustermann', 'John Doe'];
-let phoneNumbers = ['0157123345678', '015798765432'];
+let names = [];
+let phoneNumbers = [];
 loadContacts();
+render();
 
 
 function render() {
-    let content = document.getElementById('content');
+    const content = document.getElementById('content');
     content.innerHTML = '';
     content.innerHTML += `
-        <h1>My Contacts</h1>
+        <h1>Meine Kontakte</h1>
         <div>
             <input placeholder="Name" id="name">
             <input placeholder="Telefon" id="phone">
@@ -28,8 +29,8 @@ function render() {
 }
 
 function addContact() {
-    let name = document.getElementById('name');
-    let phone = document.getElementById('phone');
+    const name = document.getElementById('name');
+    const phone = document.getElementById('phone');
 
     names.push(name.value);
     phoneNumbers.push(phone.value);
@@ -47,16 +48,16 @@ function deleteContact(index) {
 }
 
 function saveContacts() {
-    let namesAsText = JSON.stringify(names);
-    let phoneNumbersAsText = JSON.stringify(phoneNumbers);
+    const namesAsText = JSON.stringify(names);
+    const phoneNumbersAsText = JSON.stringify(phoneNumbers);
 
     localStorage.setItem('names', namesAsText);
     localStorage.setItem('phoneNumbers', phoneNumbersAsText);
 }
 
 function loadContacts() {
-    let namesAsText = localStorage.getItem('names');
-    let phoneNumbersAsText = localStorage.getItem('phoneNumbers');
+    const namesAsText = localStorage.getItem('names');
+    const phoneNumbersAsText = localStorage.getItem('phoneNumbers');
 
     if (namesAsText && phoneNumbersAsText) {
         names = JSON.parse(namesAsText);
